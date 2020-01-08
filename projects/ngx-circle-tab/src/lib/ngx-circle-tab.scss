@@ -1,0 +1,50 @@
+.circle-tab-wrapper {
+  position: relative;
+  height: 350px;
+  width: 350px;
+  padding: 0;
+}
+
+.circle-tab-item {
+  position: absolute;
+  overflow: hidden;
+  cursor: pointer;
+  font-weight: 600;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid red;
+  border-radius: 100%;
+}
+
+.circle-tab-link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.circle-tab-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border: 1px solid red;
+}
+
+.circle-tab-pane {
+  display: none;
+  &.active {
+    display: block !important;
+  }
+}

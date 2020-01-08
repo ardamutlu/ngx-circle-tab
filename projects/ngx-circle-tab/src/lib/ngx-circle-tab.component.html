@@ -1,0 +1,30 @@
+<div class="circle-tab-wrapper" style="width: 350px; height: 350px">
+  <ul class="circle-tab">
+    <li class="circle-tab-item"
+        *ngFor="let tab of circleTab ; let i = index"
+        [ngStyle]="{
+        bottom: 150 - Math.round(150 * Math.sin((360 / 13 / 180) * i * Math.PI)) + 'px',
+        left: 150 - Math.round(150 * Math.cos((360 / 13 / 180) * i * Math.PI)) + 'px',
+        posx: Math.round(150 * Math.cos((360 / 13 / 180) * i * Math.PI)) + 'px',
+        posy: Math.round(150 * Math.sin((360 / 13 / 180) * i * Math.PI)) + 'px',
+        backgroundColor: tab.id === activeId ? 'red' : 'white'
+      }"
+    >
+      <a class="circle-tab-link" [ngStyle]="{
+        color: tab.id === activeId ? 'white' : 'red'
+      }"
+         href="javascript:void(0);"
+         (click)="selectTab(tab.id)"
+         [class.active]="tab.id === activeId">
+        {{tab.title}}
+      </a>
+    </li>
+  </ul>
+  <div class="circle-tab-content">
+    <ng-template ngFor let-tab [ngForOf]="circleTab">
+      <div class="circle-tab-pane {{tab.id === activeId ? 'active' : null}}">
+        <ng-template [ngTemplateOutlet]="tab.content?.first.templateRef"></ng-template>
+      </div>
+    </ng-template>
+  </div>
+</div>
